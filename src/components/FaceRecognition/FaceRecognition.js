@@ -1,5 +1,5 @@
 import React from 'react';
-import '/home/fazal/Documents/Facerecognition/src/components/FaceRecognition/Facerecognition.css'
+import '/home/fazal/Documents/smartbrain/src/components/FaceRecognition/Facerecognition.css';
 
 
 const FaceRecognition = ({imageurl,box}) => {
