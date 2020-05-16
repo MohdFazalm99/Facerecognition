@@ -38,6 +38,7 @@ class App extends Component {
       imageurl:'',
       box:{},
       route:'signin',
+      isSignedin:false,
     }
   }
 
@@ -57,7 +58,6 @@ class App extends Component {
   }
 
   Facebox=(box) =>{
-    console.log(box);
     this.setState({box:box});
   }
   
@@ -78,28 +78,39 @@ class App extends Component {
   }
 
   onRoutechange = (route) => {
+    if(route === 'signout'){
+      this.setState({isSignedin:false})
+    }else if(route === 'home'){
+      this.setState({isSignedin:true})
+    }
     this.setState({route:route});
   }
 
   render() {
+    const {isSignedin,imageurl,route,box }= this.state;
     return (
       <div className="App">
               <Particles className='particles'
               params={particlesOptions}
               />
 
-        <Navigation onRoutechange={this.onRoutechange}/>
-        {this.state.route === 'home'
-          ?<Signin onRoutechange={this.onRoutechange} />
-          :<div>
+        <Navigation isSignedin={isSignedin} onRoutechange={this.onRoutechange}/>
+        {route === 'home'
+          ?<div>
             <Logo />
             <ImageLinkForm 
             onInputChange={this.onInputChange}
             Buttonsubmit={this.Buttonsubmit}
               />
             <Rank />
-            <FaceRecognition box={this.state.box} imageurl={this.state.imageurl} />
+            <FaceRecognition box={box} imageurl={imageurl} />
           </div>
+          :(
+            route === 'signin'
+            ?<Signin onRoutechange={this.onRoutechange} />
+            :<Register onRoutechange={this.onRoutechange} />
+          )
+          
           }
       </div>
     );
