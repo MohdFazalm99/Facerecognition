@@ -1,18 +1,15 @@
 import React from 'react';
-import '/home/fazal/Documents/smartbrain/src/components/FaceRecognition/Facerecognition.css';
+import './FaceRecognition.css';
 
-
-const FaceRecognition = ({imageurl,box}) => {
-    return(
-        <div className='center ma'>
-        <div className='absolute mt2'>
-         <img id='inputimage' alt='' src={imageurl} width='300px' height='auto' />
-         <div className='bounding-box' style={{top:box.toprow, right:box.rightcol, bottom:box.bottomrow, left:box.leftcol}}></div>
-
-        </div>
-            
-        </div>
-    )
+const FaceRecognition = ({ imageUrl, box }) => {
+  return (
+    <div className='center ma'>
+      <div className='absolute mt2'>
+        <img id='inputimage' alt='' src={imageUrl} width='500px' heigh='auto'/>
+        <div className='bounding-box' style={{top: box.topRow, right: box.rightCol, bottom: box.bottomRow, left: box.leftCol}}></div>
+      </div>
+    </div>
+  );
 }
 
 export default FaceRecognition;
